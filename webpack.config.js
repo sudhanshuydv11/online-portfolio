@@ -7,7 +7,7 @@ module.exports={
       static: './dist',
       compress: true
     },
-    entry: "./index.js",
+    entry: "./src/client/index.tsx",
     output: {
       filename: "bundle.js",
       path: path.resolve("dist"),
@@ -16,7 +16,7 @@ module.exports={
     module: {
         rules:[
           {
-            test: /\.(js|jsx)$/,
+            test: /\.(js|jsx|ts|tsx)$/,
             exclude: /node_modules/,
             use: "babel-loader"
           },
