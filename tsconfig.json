@@ -9,7 +9,8 @@
       "preserveConstEnums": true,
       "allowImportingTsExtensions": true,
       "noEmit": true,
-      "sourceMap": true
+      "sourceMap": true,
+      "esModuleInterop":true
     },
     "include": ["./src/**/*.tsx","./src/**/*.ts"]
   }

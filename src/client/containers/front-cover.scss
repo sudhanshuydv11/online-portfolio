@@ -1,0 +1,12 @@
+.front-cover{
+    display: flex;
+    background-color: antiquewhite;
+    width:100vw;
+    height: 30em;
+
+    &--about-me{
+        background-color: aliceblue;
+        width: 60%;
+    }
+
+}
