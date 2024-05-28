@@ -7,6 +7,7 @@ module.exports={
       static: './dist',
       compress: true
     },
+    devtool: 'source-map',
     entry: "./src/client/index.tsx",
     output: {
       filename: "bundle.js",

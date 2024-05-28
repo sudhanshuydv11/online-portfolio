@@ -1,36 +1,20 @@
-import { Accordion, AccordionButton, AccordionItem, AccordionPanel, Avatar } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { ClosedInfoItemButton } from '../closed-info-item-button/closed-info-item.tsx';
+import { InfoItemButton } from '../info-item-button/info-item-button.tsx';
+import './info-item-styles.scss';
+import { ButtonNameType } from '../../types/types.ts';
 
-type accordianIndexType=number[]| undefined;
-
-export const InfoItem=()=>{
-    const  [isShowContent, setIsShowContent] =useState(false);
-    const [defaultIndex, setDefaultIndex]=useState<accordianIndexType>([]);
-
-    const handleClick=()=>{
-        setIsShowContent(false);
-        setDefaultIndex([]);
-    };
-
-    const handleClickCustomInfoButton=()=>{
-        setIsShowContent(true);
-        setDefaultIndex([0]);
-    };
-
-return <>
-{isShowContent
-?<Accordion defaultIndex={defaultIndex} allowToggle>
-    <AccordionItem>
-        <AccordionButton onClick={ handleClick }>
-        <Avatar/>
-        </AccordionButton>
-        <AccordionPanel>
-            test text
-        </AccordionPanel>
-    </AccordionItem>
-</Accordion>
-:<ClosedInfoItemButton onClick={handleClickCustomInfoButton}/>
+type InfoItemType=ButtonNameType &{
+    infoContent: string
 }
-</>;
+
+export const InfoItem=({infoContent,...restProps}: InfoItemType)=>{
+    const [isOpen, setIsOpen]=useState(false);
+    const handleClick=()=>{
+       setIsOpen(!isOpen);
+    };
+
+return <div className='accordian'>
+<InfoItemButton {...restProps}  onClick={handleClick}/>
+<div className={`accordian-animation-div${ isOpen ? '--open' : '--close' } `}>{infoContent}</div>
+</div>;
 };

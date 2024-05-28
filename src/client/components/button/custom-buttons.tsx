@@ -3,20 +3,25 @@ import { ZoomButton } from "./zoom-button.tsx";
 import { RotatingButton } from "./rotating-button.tsx";
 import  './buttons.scss';
 import { BUTTON_TYPES } from "../../constants/custom-buttons.ts";
+import { ButtonNameType } from "../../types/types.ts";
 
-type buttonInterface={
-    [key:string]: ()=> React.JSX.Element
+type componentsMappedToString={
+    [key:string]: (props: ButtonNameType)=> React.JSX.Element
 };
 
-const BUTTON_MAPPER: buttonInterface = {
+type CustomButtonType=ButtonNameType&{
+    buttonType: string
+}
+
+const BUTTON_MAPPER: componentsMappedToString = {
     [BUTTON_TYPES.ZOOM]: ZoomButton,
     [BUTTON_TYPES.ROTOR]: RotatingButton
     };
 
-export const CustomButton=({ name } : { name : string }) => {
+export const CustomButton=({ buttonType, ...restProps } : CustomButtonType) => {
 
-const Button=BUTTON_MAPPER[name];
+const Button=BUTTON_MAPPER[buttonType];
 
-return <Button/>;
+return <Button {...restProps}/>;
 
 };

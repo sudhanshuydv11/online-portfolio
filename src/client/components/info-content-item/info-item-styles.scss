@@ -1,0 +1,43 @@
+
+@keyframes open-accordian{
+0%{
+    transform: scaleX(0);
+    height: 0px;
+}
+50%{
+    transform: scaleX(1);
+    height: 0px;
+}
+}
+
+@keyframes close-accordian{
+0%{
+    height:300px;
+    border: 1px solid black ;
+    transform: scaleX(1);
+}
+50%{
+    transform: scaleX(1);
+    height: 0;
+}
+100%{
+    transform: scaleX(0);
+}
+}
+
+.accordian{
+    width: 70vw;
+    .accordian-animation-div{
+        &--open{
+            height:300px;
+            border: 1px solid black ;
+            animation: open-accordian 0.8s;
+        }
+        &--close{
+            animation: close-accordian 0.8s;
+            height: 0px;
+            border: 1px solid black ;
+            transform: scaleX(0);
+        }
+    }
+}
